@@ -1,0 +1,67 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  color: white;
+  margin-top: 3rem;  /* Remove max-width and just use margin-top */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.left-footer, .right-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.left-footer {
+  text-align: left;
+}
+
+.right-footer {
+  text-align: right;
+}
+
+.footer p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: 0.95rem;
+}
+
+.footer a {
+  color: #ffecd2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.footer a svg {
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+
+.footer a:hover svg {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .left-footer, .right-footer {
+    text-align: center;
+  }
+}

@@ -1,73 +1,96 @@
 <app-header></app-header>
+<div class="toolbox-container">
+  <div class="toolbox">
+    <h2>Text to JSON Array</h2>
+    <form action="">
+      <div>
+        <label for="separator">Separate by</label>
+        <input
+          class="separator"
+          name="separator"
+          type="text"
+          [(ngModel)]="separator"
+          (ngModelChange)="debounceKeyword()"
+          (blur)="convertString()"
+        />
+      </div>
 
-<div class="toolbox">
-  <h2>JSON Array Formatter</h2>
-  <form action="">
-    <div>
-      <label for="separator">Separate BY</label>
-      <input class="separator" name="separator" type="text" [(ngModel)]="separator" />
-    </div>
+      <div class="input-title">
+        <label for="text-input">Input Text Below</label>
+        <button type="button" class="clear-btn" (click)="clearKeywordInput()">Clear Input</button>
+      </div>
 
-    <label for="text-input">Input Text to separate</label>
-    <input
-      name="text-input"
-      type="text"
-      [(ngModel)]="inputKeywords"
-      (ngModelChange)="debounceKeyword()"
-      (blur)="convertString()"
-    />
-    <label for="text-output">Result:</label>
-    <input name="text-output" type="text" disabled [(ngModel)]="outputKeywords" />
-    <button
-      type="button"
-      (click)="copyToClipBoard(outputKeywords, keywordMessage)"
-      [disabled]="!outputKeywords"
-    >
-      Copy Result
-    </button>
-    @if (keywordMessage()) {
-      <p>{{ keywordMessage() }}</p>
-    }
-  </form>
+      <input
+        name="text-input"
+        type="text"
+        [(ngModel)]="inputKeywords"
+        (ngModelChange)="debounceKeyword()"
+        (blur)="convertString()"
+        placeholder="example: milk, coffee, tea"
+      />
+      <label for="text-output">Result:</label>
+      <input
+        name="text-output"
+        type="text"
+        readonly
+        [(ngModel)]="outputKeywords"
+        placeholder='example output: "["milk","coffee","tea"]"'
+        (click)="selectOutput($event)"
+      />
+      <button
+        type="button"
+        (click)="copyToClipBoard(outputKeywords, keywordMessage)"
+        [disabled]="!outputKeywords"
+      >
+        Copy Result
+      </button>
+      @if (keywordMessage()) {
+        <p>{{ keywordMessage() }}</p>
+      }
+    </form>
+  </div>
+  <div class="toolbox">
+    <h2>JSON Newlines Formatter</h2>
+    <form action="">
+      <div class="input-title">
+        <label for="paragraph-input">Input Text Below</label>
+        <button type="button" class="clear-btn" (click)="clearParagraphInput()">Clear Input</button>
+      </div>
+
+      <textarea
+        name="paragraph-input"
+        [(ngModel)]="inputParagraph"
+        (ngModelChange)="debounceReplace()"
+        (blur)="replaceString()"
+        placeholder='example: It works on my "machine"&#10;&#9;Why isn&#39;t it working in prod?'
+      ></textarea>
+      <label for="paragraph-output">Result:</label>
+      <textarea
+        name="paragraph-output"
+        readonly
+        [(ngModel)]="outputParagraph"
+        placeholder='example output: It works on my \"machine\"\n\tWhy isn&#39;t it working in prod?'
+        (click)="selectOutput($event)"
+      ></textarea>
+      <button
+        type="button"
+        (click)="copyToClipBoard(outputParagraph, replaceMessage)"
+        [disabled]="!outputParagraph"
+      >
+        Copy Result
+      </button>
+      @if (replaceMessage()) {
+        <p>{{ replaceMessage() }}</p>
+      }
+    </form>
+  </div>
 </div>
-<div class="toolbox">
-  <h2>JSON Newlines Formatter</h2>
-  <form action="">
-    <div>
-      <label for="replace-from">Replace</label
-      ><input class="separator" type="text" name="replaceFrom" [(ngModel)]="replaceFrom" />
-      <label for="replace-from">With</label
-      ><input class="separator" type="text" name="replaceTo" [(ngModel)]="replaceTo" />
-    </div>
-
-    <label for="paragraph-input">Input:</label>
-    <textarea
-      name="paragraph-input"
-      [(ngModel)]="inputParagraph"
-      (ngModelChange)="debounceReplace()"
-      (blur)="replaceString()"
-    ></textarea>
-    <label for="paragraph-output">Result:</label>
-    <textarea name="paragraph-output" disabled [(ngModel)]="outputParagraph"></textarea>
-    <button
-      type="button"
-      (click)="copyToClipBoard(outputParagraph, replaceMessage)"
-      [disabled]="!outputParagraph"
-    >
-      Copy Result
-    </button>
-    @if (replaceMessage()) {
-      <p>{{ replaceMessage() }}</p>
-    }
-  </form>
-</div>
-
 <div class="description">
   <p>
-    This toolbox is a helper for JSON format parsing. It separates strings into JSON-accepted array
-    format, and replaces newline characters with literal "\n" for copy-paste ready JSON-friendly
-    format.
+    A simple tool for JSON formatting. Converts comma-separated text into JSON arrays and escapes
+    special characters (quotes, newlines, backslashes) for copy-paste ready JSON strings.
   </p>
   <h3>Made With Angular 20</h3>
   <h1>💙I LOVE NG💙</h1>
 </div>
+<app-footer></app-footer>

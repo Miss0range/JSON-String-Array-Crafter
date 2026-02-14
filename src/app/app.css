@@ -11,9 +11,20 @@ body {
     padding: 2rem 1rem;
 }
 
-.toolbox {
+.toolbox-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1500px;
     margin: 2rem auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.toolbox {
+    margin: 0;
     padding: 2.5rem;
+    flex: 1;
+    min-width: 300px;
     max-width: 700px;
     background-color: #ffffff;
     border-radius: 1.5rem;
@@ -34,11 +45,24 @@ form {
     gap: 1.5rem;
 }
 
+.input-title{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.clear-btn{
+    height: 2rem;
+    margin: 0 0 0 auto;
+    align-self: center;
+}
+
 label {
     font-weight: 600;
     color: #4a5568;
     font-size: 0.95rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     display: block;
 }
 
@@ -75,6 +99,10 @@ input.separator {
     margin: 0 0.75rem;
     display: inline-block;
     background-color: #ffffff;
+}
+
+input::placeholder{
+    color: #949494;
 }
 
 textarea {
@@ -194,5 +222,35 @@ form > p {
     
     input, textarea {
         font-size: 16px; /* Prevents zoom on mobile */
+    }
+}
+
+@media (max-width: 1024px) {
+    .toolbox-container {
+        flex-direction: column;
+        max-width: 700px;
+    }
+    
+    .toolbox {
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .toolbox, .description {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    input, textarea {
+        font-size: 16px;
     }
 }
