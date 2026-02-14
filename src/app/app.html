@@ -28,6 +28,16 @@
         (blur)="convertString()"
         placeholder="example: milk, coffee, tea"
       />
+      <div class="brackets-control">
+        <label for="brackets-check">Add Brackets around Result</label>
+        <input
+          type="checkbox"
+          name="brackets-check"
+          [(ngModel)]="isBracketsAdded"
+          (ngModelChange)="debounceKeyword()"
+          (blur)="convertString()"
+        />
+      </div>
       <label for="text-output">Result:</label>
       <input
         name="text-output"

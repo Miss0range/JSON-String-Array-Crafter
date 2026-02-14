@@ -19,6 +19,7 @@ export class App {
   separator: string = ',';
   keywordMessage = signal('');
   private keyWordTimeout?: ReturnType<typeof setTimeout>;
+  isBracketsAdded: boolean = true;
 
   //variables for processing JSON text
   inputParagraph: string = '';
@@ -36,11 +37,12 @@ export class App {
   convertString(): void {
     if (this.inputKeywords) {
       const cleanInput = this.inputKeywords.trim().replace(/^,+|,+$/g, '');
-      this.outputKeywords = `["${cleanInput
+      const processedKeywords = `"${cleanInput
         .split(this.separator)
         .map((item) => item.trim())
         .filter((item) => item.length > 0)
-        .join('"\,"')}"]`;
+        .join('"\,"')}"`;
+      this.outputKeywords = this.isBracketsAdded ? `[${processedKeywords}]` : processedKeywords;
       this.lastMessage = this.keywordMessage;
     } else {
       this.outputKeywords = '';
