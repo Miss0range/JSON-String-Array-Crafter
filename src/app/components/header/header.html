@@ -2,12 +2,15 @@
   <div class="header-content">
     <h2>JSON Text Converter</h2>
     <div class="quick-tip">
-  <h4>
-    Hotkey: Press Ctrl + Enter to copy latest result to clipboard.
-  </h4>
-</div>
+      <h4>Hotkey: Press Ctrl + Enter to copy latest result to clipboard.</h4>
+    </div>
     <nav>
       <a href="https://magicajen.com/">Home</a>
+      <div class="theme-control">
+        @if(isDarkTheme){<label for="theme-check">Light Mode</label>}
+        @else {<label for="theme-check">Dark Mode</label>}
+        <input type="checkbox" name="theme-check" (change)="onThemeToggle()" />
+      </div>
     </nav>
   </div>
 </header>

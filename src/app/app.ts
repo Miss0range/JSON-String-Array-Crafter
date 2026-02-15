@@ -31,9 +31,22 @@ export class App {
   lastResult: string = '';
   lastMessage: WritableSignal<string> | undefined;
 
+  //theme
+  isDarkTheme = signal(false);
+
+  ngOnInit() {
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('darkMode');
+      if (saved) {
+        this.isDarkTheme.set(JSON.parse(saved));
+        this.applyTheme();
+      }
+    }
+  }
+
   /**
    * Format string separated by separator (default comma) into JSON Array format
-  */
+   */
   convertString(): void {
     if (this.inputKeywords) {
       const cleanInput = this.inputKeywords.trim().replace(/^,+|,+$/g, '');
@@ -82,8 +95,8 @@ export class App {
    * @param messageSignal - The signal to update with the success message
    * @returns A promise that resolves when copy operation completes
    * @throws Alert user when copy operation fails
-  */
-  async copyToClipBoard(copyString: string, messageSignal: WritableSignal<string>): Promise<void>{
+   */
+  async copyToClipBoard(copyString: string, messageSignal: WritableSignal<string>): Promise<void> {
     try {
       await navigator.clipboard.writeText(copyString);
       messageSignal.set('copied to clipboard');
@@ -96,9 +109,9 @@ export class App {
   }
 
   /**
-   * Debounces keyword input conversion by waiting 1 second after last user input before processing. 
+   * Debounces keyword input conversion by waiting 1 second after last user input before processing.
    * Cancels any scheduled conversion if user continues input
-  */
+   */
   debounceKeyword() {
     if (this.keyWordTimeout !== undefined) {
       clearTimeout(this.keyWordTimeout);
@@ -110,9 +123,9 @@ export class App {
   }
 
   /**
-   * Debounces paragraph input conversion by waiting 1 second after last user input before processing. 
+   * Debounces paragraph input conversion by waiting 1 second after last user input before processing.
    * Cancel any scheduled conversion if user continue input
-  */
+   */
   debounceReplace() {
     if (this.replaceTimeout !== undefined) {
       clearTimeout(this.replaceTimeout);
@@ -125,7 +138,7 @@ export class App {
 
   /**
    * Cleans up keyword input and output strings
-  */
+   */
   clearKeywordInput() {
     if (this.keyWordTimeout !== undefined) {
       clearTimeout(this.keyWordTimeout);
@@ -136,7 +149,7 @@ export class App {
 
   /**
    * Cleans up paragraph input and output strings
-  */
+   */
   clearParagraphInput() {
     if (this.replaceTimeout !== undefined) {
       clearTimeout(this.replaceTimeout);
@@ -147,7 +160,7 @@ export class App {
 
   /**
    * Auto select text in input/textarea element on click
-  */
+   */
   selectOutput(event: Event) {
     const target = event.target as HTMLInputElement | HTMLTextAreaElement;
     target.select();
@@ -156,7 +169,7 @@ export class App {
   /**
    * Listens for Ctrl+Enter keystrokes to copy the latest result to clipboard.
    * @param event - The keyboard event
-  */
+   */
   @HostListener('window:keydown', ['$event'])
   handleCopyHotkey(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'Enter') {
@@ -164,6 +177,21 @@ export class App {
       if (this.lastResult && this.lastMessage) {
         this.copyToClipBoard(this.lastResult, this.lastMessage);
       }
+    }
+  }
+
+  onThemeChange(newTheme: boolean) {
+    this.isDarkTheme.set(newTheme);
+    localStorage.setItem('darkMode', JSON.stringify(this.isDarkTheme()));
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    console.log('change theme');
+    if (this.isDarkTheme()) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
     }
   }
 }

@@ -1,1 +1,261 @@
-/* You can add global styles to this file, and also import other style files */
+/* Dark Mode Styles - Spotify Inspired */
+body.dark-mode {
+  background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+}
+
+/* Header in dark mode */
+body.dark-mode header {
+  background: linear-gradient(135deg, #000000 0%, #1db954 100%);
+}
+
+/* Toolboxes in dark mode */
+body.dark-mode .toolbox {
+  background-color: #181818;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .toolbox h2 {
+  color: #1db954;
+}
+
+/* Labels in dark mode */
+body.dark-mode label {
+  color: #b3b3b3;
+}
+
+/* Inputs and textareas in dark mode - Better readability */
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #282828;
+  color: #e1ffc7;  /* Pure white text */
+  border-color: #404040;
+  font-weight: 600;  /* Bolder text */
+}
+
+body.dark-mode input:disabled,
+body.dark-mode textarea:disabled {
+  background-color: #1e1e1e;
+  color: #e8e8e8;  /* Bright gray for disabled */
+  font-weight: 600;
+}
+
+/* Separator input */
+body.dark-mode input.separator {
+  background-color: #282828;
+  color: #1db954;  /* Spotify green - high contrast */
+  font-weight: 900;  /* Extra bold */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #8a8a8a;
+  font-weight: 500;  /* Medium weight for placeholders */
+}
+
+/* Separator input in dark mode */
+body.dark-mode input.separator {
+  background-color: #282828;
+  color: #1db954;
+  font-weight: 800;
+}
+
+/* Buttons in dark mode - Spotify green */
+body.dark-mode button:not(:disabled) {
+  background: #1db954;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+}
+
+body.dark-mode button:not(:disabled):hover {
+  background: #1ed760;
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.6);
+}
+
+body.dark-mode button:disabled {
+  background: #282828;
+  color: #535353;
+}
+
+/* Success message in dark mode */
+body.dark-mode form > p {
+  color: #1db954;
+}
+
+/* Quick tip in dark mode */
+body.dark-mode .quick-tip {
+  background: 
+    linear-gradient(135deg, rgba(29, 185, 84, 0.8) 0%, rgba(30, 215, 96, 0.8) 100%),
+    #000000;
+}
+
+body.dark-mode .quick-tip h4 {
+  color: white;
+}
+
+/* Brackets and theme controls in dark mode */
+body.dark-mode .brackets-control {
+  background-color: #282828;
+  border-color: #404040;
+}
+
+body.dark-mode .brackets-control input[type="checkbox"]:checked {
+  background: #1db954;
+}
+
+/* Description section in dark mode */
+body.dark-mode .description {
+  background-color: #181818;
+}
+
+body.dark-mode .description p {
+  color: #b3b3b3;
+}
+
+body.dark-mode .description h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .description h1 {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transition for theme changes */
+body,
+.toolbox,
+input,
+textarea,
+label,
+button {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Improved text readability in dark mode */
+body.dark-mode label {
+  color: #d4f4dd;  /* Light lime/mint color */
+  font-weight: 600;
+}
+
+body.dark-mode .toolbox h2 {
+  color: #c7f5d9;  /* Lighter lime */
+  font-weight: 800;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #282828;
+  color: #ffffff;
+  border-color: #404040;
+  font-weight: 500;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color:  #d4f4dd !important;
+  font-weight: 400;
+}
+
+/* Brackets control label */
+body.dark-mode .brackets-control label {
+  color:  #d4f4dd !important;
+  font-weight: bolder;
+}
+
+/* Description section*/
+body.dark-mode .description {
+  background-color: #181818;
+}
+
+body.dark-mode .description p {
+  color: #d4f4dd !important;  /* Light lime */
+  font-weight: 600 !important;
+}
+
+body.dark-mode .description h3 {
+  color: #ffffff !important;  /* Pure white */
+  font-weight: 700 !important;
+}
+
+/* Footer in dark mode */
+body.dark-mode .footer {
+  background: linear-gradient(135deg, #000000 0%, #1db954 100%);
+}
+
+body.dark-mode .footer p {
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 1;
+}
+
+body.dark-mode .footer a {
+  color: #c7f5d9;  /* Light lime for links */
+  font-weight: 700;
+}
+
+body.dark-mode .footer a:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+body.dark-mode .footer a svg {
+  color: #c7f5d9;
+}
+
+/* Light mode toggle (default) */
+.brackets-control input[type="checkbox"] {
+  appearance: none;
+  width: 44px;
+  height: 24px;
+  background-color: #cbd5e0;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.brackets-control input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.brackets-control input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.brackets-control input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
+}
+
+/* Dark mode toggle - Spotify green theme */
+body.dark-mode .brackets-control input[type="checkbox"] {
+  background-color: #404040 !important;
+}
+
+body.dark-mode .brackets-control input[type="checkbox"]::before {
+  background-color: #b3b3b3 !important;
+}
+
+body.dark-mode .brackets-control input[type="checkbox"]:checked {
+  background: #1db954 !important;
+}
+
+body.dark-mode .brackets-control input[type="checkbox"]:checked::before {
+  background-color: #ffffff !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus {
+  border-color: #1db954 !important;
+  background-color: #282828 !important;  /* Keep dark, not white */
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.2) !important;
+  color: #ffffff !important;  /* Keep text white */
+}

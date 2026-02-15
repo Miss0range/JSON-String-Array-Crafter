@@ -61,3 +61,88 @@ nav a:hover {
         linear-gradient(135deg, rgba(255, 154, 86, 0.65) 0%, rgba(255, 106, 136, 0.65) 100%),
         #ffffff;
 }
+
+/* Add to your existing CSS */
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  transition: background 0.3s ease;
+}
+
+.theme-control:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.theme-control label {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Hide default checkbox */
+.theme-control input[type="checkbox"] {
+  appearance: none;
+  width: 44px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+}
+
+/* Checkbox slider */
+.theme-control input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Checked state (Dark mode ON) */
+.theme-control input[type="checkbox"]:checked {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.theme-control input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
+  background-color: #1a1a2e; /* Dark color when checked */
+}
+
+.theme-control input[type="checkbox"]:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .theme-control label {
+    font-size: 0.85rem;
+  }
+}

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [isDarkTheme]="isDarkTheme()" (themeToggle)="onThemeChange($event)"></app-header>
 <div class="toolbox-container">
   <div class="toolbox">
     <h2>Text to JSON Array</h2>
@@ -101,6 +101,5 @@
     special characters (quotes, newlines, backslashes) for copy-paste ready JSON strings.
   </p>
   <h3>Made With Angular 20</h3>
-  <h1>💙I LOVE NG💙</h1>
 </div>
 <app-footer></app-footer>
