@@ -180,14 +180,20 @@ export class App {
     }
   }
 
+  /**
+   * set theme boolean value with value passed in from header, 
+   * and store the theme value to local storage
+  */
   onThemeChange(newTheme: boolean) {
     this.isDarkTheme.set(newTheme);
     localStorage.setItem('darkMode', JSON.stringify(this.isDarkTheme()));
     this.applyTheme();
   }
 
+  /**
+   * Apply theme by toggle body class according to current color theme
+  */
   applyTheme() {
-    console.log('change theme');
     if (this.isDarkTheme()) {
       document.body.classList.add('dark-mode');
     } else {
