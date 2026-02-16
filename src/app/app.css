@@ -232,26 +232,7 @@ form > p {
     }
     
     .toolbox {
-        margin: 1rem auto;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 1rem 0.5rem;
-    }
-    
-    .toolbox, .description {
-        padding: 1.5rem;
-        margin: 1.5rem auto;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    input, textarea {
-        font-size: 16px;
+        margin: 1rem 0;
     }
 }
 
